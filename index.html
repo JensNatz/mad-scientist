@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>The Mad Scientist - 2D Game</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="./assets/classes/keyboard.class.js"></script>
+    <script src="./assets/classes/intervalGenerator.class.js"></script>
+    <script src="./assets/classes/drawableObject.class.js"></script>
+    <script src="./assets/classes/statusbar.class.js"></script>
+    <script src="./assets/classes/healthpackToken.js"></script>
+    <script src="./assets/classes/bombToken.class.js"></script>
+    <script src="./assets/classes/bombSymbol.class.js"></script>
+    <script src="./assets/classes/movableObject.class.js"></script>
+    <script src="./assets/classes/background.class.js"></script>
+    <script src="./assets/classes/foreground.class.js"></script>
+    <script src="./assets/classes/laserbeam.class.js"></script>
+    <script src="./assets/classes/bomb.class.js"></script>
+    <script src="./assets/classes/bullet.class.js"></script>
+    <script src="./assets/classes/rocket.class.js"></script>
+    <script src="./assets/classes/character.class.js"></script>
+    <script src="./assets/classes/hero.class.js"></script>
+    <script src="./assets/classes/enemyWithClub.class.js"></script>
+    <script src="./assets/classes/enemyWithGun.class.js"></script>
+    <script src="./assets/classes/drone.class.js"></script>
+    <script src="./assets/classes/world.class.js"></script>
+    <script src="./assets/classes/level.class.js"></script>
+    <script src="./levels/level1.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="portrait-message">
+        <img src="assets/img/gui/rotate_device.png" alt="Please rotate your device">
+    </div>
+    <div id="wrapper" class="wrapper bg-home">
+        <div class="controls-wrapper">
+            <div id="controls" class="controls">
+                <button id="btn-start" class="btn control-btn btn-start"></button>
+                <button id="btn-instructions" class="btn control-btn btn-instructions"></button>
+                <button id="btn-imprint" class="btn control-btn btn-imprint"></button>
+            </div>
+            <div id="endscreen-controls" class="controls d-none">
+                <button id="btn-again" class="btn control-btn btn-again"></button>
+                <button id="btn-home" class="btn control-btn btn-home"></button>
+            </div>
+        </div>
+        <div id="loadingScreen" class="content d-none">
+            <div class="spinner"></div>
+        </div>
+        <div id="instructions" class="content d-none">
+            <img id="btn-instructions-back" class="btn control-btn-back" src="assets/img/gui/btn_back.png" alt="Back">
+            <img src="assets/img/gui/instructions.png" alt="Instructions" width="100%">
+        </div>
+        <div id="imprint" class="content d-none">
+            <img id="btn-imprint-back" class="btn control-btn-back" src="assets/img/gui/btn_back.png" alt="Back">
+            <div class="imprint">
+                <h1>Impressum</h1>
+                <p>Angaben gemäß § 5 DDG</p>
+                <p>Jens Natzschka <br>
+                    Johannes-Scharrer-Straße 1<br>
+                    80686 München <br>
+                </p>
+                <p><strong>Kontakt:</strong> <br>
+                    Telefon: 0176-4556643<br>
+                    E-Mail: <a href='mailto:jens.natzschka@web.de'>jens.natzschka@web.de</a></br></p>
+                <p><strong>Haftungsausschluss: </strong><br><br><strong>Haftung für Inhalte</strong><br><br>
+                    Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
+                    Vollständigkeit
+                    und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir
+                    gemäß
+                    § 7 Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+                    Nach §§
+                    8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte
+                    fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
+                    Tätigkeit
+                    hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den
+                    allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem
+                    Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von
+                    entsprechenden
+                    Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p><br>
+                Website Impressum von <a href="https://www.impressum-generator.de">impressum-generator.de</a>
+                <p><strong>Grafiken und Sounds:</strong> <br><br>
+                    Grafiken von: https://craftpix.net/<br>
+                    Sounds von: https://opengameart.org/ und https://www.zapsplat.com/
+            </div>
+        </div>
+        <div id="game" class="content d-none">
+            <div id="btn-mute" class="btn btn-mute"></div>
+            <canvas id="canvas" width="1400" height="768"></canvas>
+            <div class="mobile-controls-wrapper">
+                <div class="mobile-controls">
+                    <div class="mobile-controls-area">
+                        <button id="btn-left" class="btn mobile-control-btn btn-left"></button>
+                        <button  id="btn-right" class="btn mobile-control-btn btn-right"></button>
+                    </div>
+                    <div class="mobile-controls-area">
+                        <button id="btn-bomb" class="btn mobile-control-btn btn-bomb"></button>
+                        <button id="btn-laser" class="btn mobile-control-btn btn-laser"></button>
+                        <button id="btn-jump" class="btn mobile-control-btn btn-jump"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>

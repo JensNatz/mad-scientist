@@ -1,0 +1,309 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.d-none {
+    display: none !important;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;;
+    background-color: black;
+    flex-direction: column;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+p {
+    margin: 20px 0;
+}
+
+a, a:visited, a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.wrapper {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100vw;
+    height: calc(100vw * (768 / 1400));
+    max-width: 1400px; 
+    max-height: 768px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    aspect-ratio: 1400 / 768;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.bg-home {
+    background-image: url('assets/img/gui/cover.jpg');
+}
+
+.bg-gameOver {
+    background-image: url('assets/img/gui/lose.jpg');
+    z-index: 1;
+}
+
+.bg-gameWin {
+    background-image: url('assets/img/gui/win.jpg');
+    z-index: 1;
+}
+
+.bg-grey {
+    background-image: url('assets/img/gui/background.jpg');
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    gap: 32px
+}
+
+.imprint {
+    width: 90%;
+    height: 90%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.controls-wrapper{
+    position: absolute;
+    width: 100%;
+    bottom: 40px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.btn {
+    all: unset;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.btn-start {
+    background-image: url('assets/img/gui/btn_startgame.png');
+}
+
+.btn-instructions {
+    background-image: url('assets/img/gui/btn_instructions.png');
+}
+
+.btn-imprint {
+    background-image: url('assets/img/gui/btn_imprint.png');
+}
+
+.btn-again {
+    background-image: url('assets/img/gui/btn_play_again.png');
+}
+
+.btn-home {
+    background-image: url('assets/img/gui/btn_home.png');
+}
+
+.btn-left {
+    background-image: url('assets/img/gui/btn_left.png');
+}
+
+.btn-right {
+    background-image: url('assets/img/gui/btn_right.png');
+}
+
+.btn-jump {
+    background-image: url('assets/img/gui/btn_jump.png');
+}
+
+.btn-laser {
+    background-image: url('assets/img/gui/btn_laser.png');
+}
+
+.btn-bomb {
+    background-image: url('assets/img/gui/btn_bomb.png');
+}
+
+
+.control-btn {
+    width: 180px;
+    height: 62px;
+}
+
+.control-btn-back {
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    width: 140px;
+}
+
+.mobile-controls-wrapper {
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 0 20px 20px 20px;
+}
+
+.mobile-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-controls-area {
+    display: flex;
+    gap: 16px;
+}
+
+.mobile-control-btn {
+    width: 60px;
+    height: 49px;
+}
+
+.btn-mute {
+    width: 80px;
+    height: 65px;
+    background-image: url('assets/img/gui/btn_mute.png');
+    position: absolute;
+    top: 180px;
+    left: 32px;
+}
+
+.btn-mute.muted {
+    background-image: url('assets/img/gui/btn_unmute.png');
+}
+
+.portrait-message {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(10px); 
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.spinner {
+    width: 80px; 
+    height: 80px;
+    border: 8px solid #d3d3d3;
+    border-top: 8px solid #a9a9a9; 
+    border-radius: 50%; 
+    animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); 
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover {
+        transform: scale(1.05);
+    }
+}
+
+@media (orientation: portrait) and (any-pointer: coarse) {
+    .portrait-message {
+        display: flex;
+    }
+}
+
+@media (any-pointer: coarse) {
+    .mobile-controls-wrapper {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .wrapper {
+      width: 100vw;
+    }
+  }
+
+@media only screen and (max-height: 768px) {
+    .wrapper{
+      height: 100vh;
+    }
+
+    .controls-wrapper{
+        bottom: 80px;
+    }
+  }
+
+@media only screen and (max-width: 1024px), 
+       only screen and (max-height: 768px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    .controls {
+        gap: 16px;
+    }
+
+    .control-btn {
+        width: 150px;
+        height: 52px;
+    }
+
+    .control-btn-back {
+        width: 100px;
+    }
+
+    .btn-mute {
+        width: 50px;
+        top: 124px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .mobile-control-btn {
+        width: 44px;
+        height: 36px;
+    } 
+
+    .control-btn {
+        width: 120px;
+        height: 41px;
+    }
+}
